@@ -27,6 +27,34 @@ Etc :
 - Internet Broadband FTTH (Minimal Bandwidth 10MB or Higher)
 - Backup GSM Internet (Optional Case)
 
+## Configuration Scope
+
+### Router Scope
+
+MikroTik Configuration :
+- Loopback IP (Support Routing OSPF, Routing BGP)
+- Static IP (IP Virtualization Host, Tunnel L2TP, SSTP)
+- DHCP Server (IP Virtualization Host, LAN Management)
+- Tunnel SSTP (P2P OSPF Network)
+- Tunnel L2TP (VPN Access)
+- VLAN (Management, Production)
+- Static Routing (Routing to Public IP VPS)
+- Routing OSPF (Routing for Hope Network)
+- Routing BGP (Routing for Private IP and VPN Access)
+- Routing Filter OSPF and BGP (Accept, Discard Rules)
+- Firewall NAT (Src-NAT, Dst-NAT, Access List NAT, Masquerade)
+- User Management (Username, Password, Group)
+- Harderning IP Services Router (Custom Port services)
+- DNS Over HTTPs (Cloudflare Case)
+
+### Virtualization Scope
+
+Proxmox Configuration :
+- Disable Proxmox-Subscription
+- VLAN Management
+- VLAN Host Virtualization
+- Harderning (Fail2ban)
+
 ## First Build Router on Cloud
 
 ## Router For Baremetal Server
