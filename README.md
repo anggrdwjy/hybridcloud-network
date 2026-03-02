@@ -35,6 +35,7 @@ MikroTik Configuration :
 - Loopback IP (Support Routing OSPF, Routing BGP)
 - Static IP (IP Virtualization Host, Tunnel L2TP, SSTP)
 - DHCP Server (IP Virtualization Host, LAN Management)
+- DHCP Client (Access Internet For Router Local)
 - Tunnel SSTP (P2P OSPF Network)
 - Tunnel L2TP (VPN Access)
 - VLAN (Management, Production)
