@@ -14,9 +14,18 @@ Virtual Cloud Computing :
 - 1 Public IP
 
 Local Hardware (Consumer Grade) :
-- Router MikroTik RB750/RB951/RB2011/CHRx86 (CHR x86 include license P1)
+- Router MikroTik RB750/RB951/RB2011/CHR x86 (CHR x86 include license P1)
 - PC Intel i5 Gen 10, RAM 32GB, HDD 1TB and SSD 500GB (For Production Case)
 - LAN
+
+System Open-Source Software :
+- Proxmox Virtualization Environment (For Virtualizaition Host)
+- MikroTik RouterOS 6.49.18 or Newer
+
+Etc :
+- Electircal system support 24/7
+- Internet Broadband FTTH (Minimal Bandwidth 10MB or Higher)
+- Backup GSM Internet (Optional Case)
 
 ## First Build Router on Cloud
 
