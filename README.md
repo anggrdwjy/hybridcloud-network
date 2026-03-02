@@ -40,7 +40,7 @@ MikroTik Configuration :
 - Tunnel L2TP (VPN Access)
 - VLAN (Management, Production)
 - Static Routing (Routing to Public IP VPS)
-- Routing OSPF (Routing for Hope Network)
+- Routing OSPF (Routing for Hope Router)
 - Routing BGP (Routing for Private IP and VPN Access)
 - Routing Filter OSPF and BGP (Accept, Discard Rules)
 - Firewall NAT (Src-NAT, Dst-NAT, Access List NAT, Masquerade)
