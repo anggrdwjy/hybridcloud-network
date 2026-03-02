@@ -45,7 +45,7 @@ MikroTik Configuration :
 - Routing Filter OSPF and BGP (Accept, Discard Rules)
 - Firewall NAT (Src-NAT, Dst-NAT, Access List NAT, Masquerade)
 - User Management (Username, Password, Group)
-- Harderning IP Services Router (Custom Port services)
+- Harderning IP Services Router (Disable Port, Custom Port Services)
 - DNS Over HTTPs (Cloudflare Case)
 
 ### Virtualization Scope
@@ -54,7 +54,7 @@ Proxmox Configuration :
 - Disable Proxmox-Subscription
 - VLAN Management
 - VLAN Host Virtualization
-- Harderning (Fail2ban)
+- Harderning (Fail2ban, SSH)
 
 ## First Build Router on Cloud
 
