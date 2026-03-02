@@ -9,7 +9,7 @@ This network technology running 24Hour/7days in my labs and production system wi
 ### Information
 
 Virtual Cloud Computing :
-- VPS (AWS/GCP/Local Provide VPS) 1 CPU, 1 RAM, 30GB Storage
+- VPS (AWS/GCP/DigitalOcean/Hostinger/Local Provider VPS) 1 CPU, 1 RAM, 30GB Storage
 - Install MikroTik CHR x86 on VPS (Include license P1)
 - 1 Public IP
 
