@@ -97,15 +97,58 @@ set winbox port=58291  \\ Custom Port Winbox
 set api-ssl disabled=yes
 ```
 
-4. Setup Static Routing (Set Public IP and Routing to 0.0.0.0/0)
-5. Setup DNS (Set 1.1.1.1, 1.0.0.1 or 8.8.8.8, 8.8.4.4)
-6. Setup VPN SSTP Tunnel (For Between Routers and Custom Port SSTP)
-7. Setup VPN L2TP Tunnel (For VPN Access to Local Network)
-8. Setup Firewall NAT (Set Out Interface and SRC-NAT to Public IP)
-9. Disable Neighbor Discovery
-10. Disable SMB Default MikroTik
-11. Disable Bandwidth-Server
-12. Set System Identity and System Clock
+3. Setup Static Routing (Set Public IP and Routing to 0.0.0.0/0)
+```
+/ip route
+add distance=1 gateway=103.xx.yy.zzz
+```
+
+4. Setup DNS (Set 1.1.1.1, 1.0.0.1 or 8.8.8.8, 8.8.4.4)
+```
+/ip dns
+set allow-remote-requests=yes servers=1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4
+```
+
+5. Setup VPN SSTP Tunnel (For Between Routers and Custom Port SSTP)
+
+Setup Profile SSTP
+```
+/ppp secret
+add local-address=10.13.3.4 name=sstp.proxmox password=changeme profile=default-encryption remote-address=10.13.3.5 service=sstp
+```
+
+Setup VPN SSTP
+```
+/interface sstp-server server
+set default-profile=default-encryption enabled=yes port=49431
+```
+
+6. Setup VPN L2TP Tunnel (For VPN Access to Local Network)
+
+Setup Profile L2TP
+```
+/ppp secret
+add local-address=10.13.3.0 name=vpn.l2tp1 password=changeme profile=default-encryption remote-address=10.13.3.1 service=l2tp
+add local-address=10.13.3.2 name=vpn.l2tp2 password=changeme profile=default-encryption remote-address=10.13.3.3 service=l2tp
+```
+
+Setup VPN L2TP
+```
+/interface l2tp-server server
+set enabled=yes ipsec-secret=changemenow use-ipsec=yes
+```
+
+7. Setup Firewall NAT (Set Out Interface and SRC-NAT to Public IP)
+```
+/ip firewall nat
+add action=src-nat chain=srcnat out-interface=ether1 to-addresses=103.xx.yy.zz
+
+```
+
+12. Disable Neighbor Discovery
+13. Disable SMB Default MikroTik
+14. Disable Bandwidth-Server
+15. Set System Identity and System Clock
 
 ### Step 2. MikroTik RB2011 (Router Local)
 
