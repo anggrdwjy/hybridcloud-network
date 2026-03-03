@@ -61,18 +61,19 @@ Proxmox Configuration :
 ### Setup VPS
 
 - Order VPS (AWS/GCP/DigitalOcean/Hostinger/Local Provider VPS)
-- OS MikroTik CHRx86 or Ubuntu Newer (Special Case)
-- Access SSH or Console from Public IP
+- Change type OS MikroTik CHRx86 or Ubuntu Newer (Special Case)
+- Access VPS via SSH from Public IP or Console from platform
 
 ### MikroTik Running on Ubuntu VPS (Special Case)
 
-- Access SSH or Console from Public IP
-- Update Ubuntu "apt update && apt upgrade -y"
-- Install Git "apt install git -y"
+- Access VPS via SSH from Public IP
+- Update Ubuntu `apt update && apt upgrade -y`
+- Install Git `apt install git -y`
 - Clone Script Install MikroTik on Ubuntu VPS, Access Detail Documentation : "https://github.com/anggrdwjy/mikrotik-ubuntukvm.git"
 - First Step, Access MikroTik via Winbox from Public IP
-- Step two, Change New Password
+- Step two, Change New Password (Please Harderning Username Password First)
 - Install License P1 or Upgrade License
+- Ping 1.1.1.1 or 8.8.8.8 from MikroTik Router
 
 
 ## Router For Baremetal Server
