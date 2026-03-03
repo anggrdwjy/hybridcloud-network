@@ -27,7 +27,7 @@ Etc :
 - Internet Broadband FTTH (Minimal Bandwidth 10MB or Higher)
 - Backup GSM Internet (Optional Case)
 
-## Configuration Scope
+## Network Configuration Scope
 
 ### Router Scope
 
@@ -72,11 +72,42 @@ Proxmox Configuration :
 - Clone Script Install MikroTik on Ubuntu VPS, Access Detail Documentation : "https://github.com/anggrdwjy/mikrotik-ubuntukvm.git"
 - First Step, Access MikroTik via Winbox from Public IP
 - Step two, Change New Password (Please Harderning Username Password First)
-- Install License P1 or Upgrade License
+- Check and Validation License, Install License P1 or Upgrade License
 - Ping 1.1.1.1 or 8.8.8.8 from MikroTik Router
 - Request Time Out (RTO) Ping, Check your DNS from MikroTIk Router until Replay Response
 
 ## Configuration Router
+
+### Step 1. MikroTik CHR on VPS
+
+1. Harderning Username and Password (Add New Username, Group Full Admin, and Delete Default Username Admin)
+```
+
+```
+
+2. Custom Port IP Services (SSH, Winbox and Disable Port API, API-SSL, FTP, Telnet, WWW, WWW-SSL)
+```
+/ip service
+set telnet disabled=yes
+set ftp disabled=yes
+set www disabled=yes
+set ssh port=23452  \\ Custom Port SSH
+set api disabled=yes
+set winbox port=58291  \\ Custom Port Winbox
+set api-ssl disabled=yes
+```
+
+4. Setup Static Routing (Set Public IP and Routing to 0.0.0.0/0)
+5. Setup DNS (Set 1.1.1.1, 1.0.0.1 or 8.8.8.8, 8.8.4.4)
+6. Setup VPN SSTP Tunnel (For Between Routers and Custom Port SSTP)
+7. Setup VPN L2TP Tunnel (For VPN Access to Local Network)
+8. Setup Firewall NAT (Set Out Interface and SRC-NAT to Public IP)
+9. Disable Neighbor Discovery
+10. Disable SMB Default MikroTik
+11. Disable Bandwidth-Server
+12. Set System Identity and System Clock
+
+### Step 2. MikroTik RB2011 (Router Local)
 
 ## Baremetal Server
 
