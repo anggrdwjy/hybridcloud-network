@@ -74,9 +74,11 @@ Proxmox Configuration :
 - Step two, Change New Password (Please Harderning Username Password First)
 - Install License P1 or Upgrade License
 - Ping 1.1.1.1 or 8.8.8.8 from MikroTik Router
+- Request Time Out (RTO) Ping, Check your DNS from MikroTIk Router until Replay Response
 
+## Configuration Router
 
-## Router For Baremetal Server
+## Baremetal Server
 
 ## Virtualization Host on Baremetal
 
