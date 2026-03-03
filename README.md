@@ -179,6 +179,12 @@ set time-zone-name=Asia/Jakarta
 
 ### Step 2. MikroTik RB2011 (Router Local)
 
+### Step 3. Routing OSPF
+
+### Step 4. Routing BGP
+
+### Step 5. Routing Filter
+
 ## Baremetal Server
 
 ## Virtualization Host on Baremetal
