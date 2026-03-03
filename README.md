@@ -81,9 +81,10 @@ Proxmox Configuration :
 ### Step 1. MikroTik CHR on VPS
 
 1. Harderning Username and Password (Add New Username, Group Full Admin, and Delete Default Username Admin)
-```
 
-```
+<p align="center">
+<img src="img/user-list.png">
+</p>
 
 2. Custom Port IP Services (SSH, Winbox and Disable Port API, API-SSL, FTP, Telnet, WWW, WWW-SSL)
 ```
@@ -142,7 +143,6 @@ set enabled=yes ipsec-secret=changemenow use-ipsec=yes
 ```
 /ip firewall nat
 add action=src-nat chain=srcnat out-interface=ether1 to-addresses=103.xx.yy.zz
-
 ```
 
 8. Disable Neighbor Discovery
