@@ -111,13 +111,13 @@ set allow-remote-requests=yes servers=1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4
 
 5. Setup VPN SSTP Tunnel (For Between Routers and Custom Port SSTP)
 
-Setup Profile SSTP
+* Setup Profile SSTP
 ```
 /ppp secret
 add local-address=10.13.3.4 name=sstp.proxmox password=changeme profile=default-encryption remote-address=10.13.3.5 service=sstp
 ```
 
-Setup VPN SSTP
+* Setup VPN SSTP
 ```
 /interface sstp-server server
 set default-profile=default-encryption enabled=yes port=49431
@@ -125,14 +125,14 @@ set default-profile=default-encryption enabled=yes port=49431
 
 6. Setup VPN L2TP Tunnel (For VPN Access to Local Network)
 
-Setup Profile L2TP
+* Setup Profile L2TP
 ```
 /ppp secret
 add local-address=10.13.3.0 name=vpn.l2tp1 password=changeme profile=default-encryption remote-address=10.13.3.1 service=l2tp
 add local-address=10.13.3.2 name=vpn.l2tp2 password=changeme profile=default-encryption remote-address=10.13.3.3 service=l2tp
 ```
 
-Setup VPN L2TP
+* Setup VPN L2TP
 ```
 /interface l2tp-server server
 set enabled=yes ipsec-secret=changemenow use-ipsec=yes
@@ -145,10 +145,37 @@ add action=src-nat chain=srcnat out-interface=ether1 to-addresses=103.xx.yy.zz
 
 ```
 
-12. Disable Neighbor Discovery
-13. Disable SMB Default MikroTik
-14. Disable Bandwidth-Server
-15. Set System Identity and System Clock
+8. Disable Neighbor Discovery
+```
+/ip neighbor discovery-settings
+set discover-interface-list=none protocol=""
+```
+
+9. Disable SMB Default MikroTik
+```
+/ip smb
+set allow-guests=no
+```
+
+10. Disable Bandwidth-Server
+```
+/tool bandwidth-server
+set authenticate=no enabled=no
+```
+
+11. Set System Identity and System Clock
+
+* System Indentity
+```
+/system identity
+set name=INETGW-CHRx86-VPS
+```
+
+* System Clock
+```
+/system clock
+set time-zone-name=Asia/Jakarta
+```
 
 ### Step 2. MikroTik RB2011 (Router Local)
 
