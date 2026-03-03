@@ -57,7 +57,7 @@
 
 #### Harderning Username and Password (Add New Username, Group Full Admin, and Delete Default Username Admin)
 
-<p align="center">
+<p align="left">
 <img src="img/user-list.png">
 </p>
 
