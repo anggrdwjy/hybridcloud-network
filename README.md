@@ -184,7 +184,8 @@ add address=172.23.74.64/26 dns-server=1.1.1.1,1.0.0.1 gateway=172.23.74.65
 #### Firewall NAT
 ```
 /ip firewall nat
-add action=src-nat chain=srcnat out-interface=ether1 src-address-list=access-list to-addresses=103.xx.yy.zz
+add action=src-nat chain=srcnat out-interface=ether1 src-address-list=access-list\
+to-addresses=103.xx.yy.zz
 ```
 
 #### Firewall Address-list
@@ -196,6 +197,11 @@ add address=10.13.3.48/28 list=access-list
 add address=10.12.2.48/29 list=access-list
 add address=172.23.74.64/26 list=access-list
 ```
+
+#### Access-List Verification
+<p align="left">
+<img src="img/aclinetgw.png">
+</p>
 
 #### B. MikroTik RB2011 (Router Local)
 
@@ -214,6 +220,11 @@ add address=172.23.74.64/26 list=access-list
 add address=10.15.0.0/24 list=access-list
 ```
 
+#### Access-List Verification
+<p align="left">
+<img src="img/aclcore.png">
+</p>
+
 ### Step 3. VPN Tunnel SSTP and L2TP
 
 #### A. MikroTik CHR on VPS
@@ -222,7 +233,8 @@ add address=10.15.0.0/24 list=access-list
 * Setup Profile SSTP
 ```
 /ppp secret
-add local-address=10.13.3.4 name=sstp.proxmox password=changeme profile=default-encryption remote-address=10.13.3.5 service=sstp
+add local-address=10.13.3.4 name=sstp.proxmox password=changeme profile=default-encryption\
+remote-address=10.13.3.5 service=sstp
 ```
 
 * Setup VPN SSTP
