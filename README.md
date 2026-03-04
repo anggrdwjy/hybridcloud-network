@@ -579,7 +579,12 @@ iface vlan13 inet static
 
 ```
 
-### VLAN Virtualization Host
+#### Verification
+<p align="left">
+<img src="img/proxinetverf.png">
+</p>
+
+### VLAN Virtual-Machine Testing
 
 ### Harderning
 
