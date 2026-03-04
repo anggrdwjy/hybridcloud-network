@@ -292,6 +292,38 @@ set time-zone-name=Asia/Jakarta
 
 #### A. MikroTik CHR on VPS
 
+* Set Loopback
+```
+/interface bridge
+add name=Lo0
+```
+
+* Set IP Loopback
+```
+/ip address
+add address=192.168.150.1 interface=Lo0 network=192.168.150.1
+```
+
+* Set OSPF Instance
+```
+/routing ospf instance
+set [ find default=yes ] router-id=192.168.150.1
+```
+
+* Set OSPF Network Advertise
+```
+/routing ospf network
+add area=backbone network=10.13.3.4/31
+add area=backbone network=192.168.150.1/32
+```
+
+* Set OSPF Routing Filter
+```
+/routing filter
+add action=accept chain=ospf-in prefix-length=31-32
+add action=discard chain=ospf-in
+
+```
 
 #### B. MikroTik RB2011 (Router Local)
 
