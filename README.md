@@ -51,9 +51,16 @@
 - Ping 1.1.1.1 or 8.8.8.8 from MikroTik Router
 - Request Time Out (RTO) Ping, Check your DNS from MikroTIk Router until Replay Response
 
-## Configuration Router
+## Configuration Router Scope
 
-### Step 1. Basic Configuration
+* Basic Configuration
+* Firewall NAT and Address-List
+* VPN Tunnel Server L2TP, SSTP and VPN Client 
+* Routing OSPF and Routing Filter
+* Routing BGP and Routing Filter
+* Harderning
+
+## Step 1. Basic Configuration
 
 #### A. MikroTik CHR on VPS
 
