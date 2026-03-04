@@ -649,7 +649,11 @@ iface vlan13 inet static
 <img src="img/proxkvmdhcptestwin.png">
 </p>
 
-### C. Harderning
+### C. Harderning Proxmox
+
+#### Username and Password Management
+* Create New Username and Password with Full Priviledge
+* Disable Root Login (Default Login)
 
 #### Custom Port SSH (Default 22)
 
