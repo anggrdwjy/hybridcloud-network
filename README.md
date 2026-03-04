@@ -165,6 +165,129 @@ set time-zone-name=Asia/Jakarta
 
 ### Step 2. MikroTik RB2011 (Router Local)
 
+#### A. Harderning Username and Password (Add New Username, Group Full Admin, and Delete Default Username Admin)
+
+* Add New User
+```
+/user add name=user.mikrotikrb password=changemenow group=full
+```
+
+* Remove User (Admin Default)
+```
+/user remove admin
+```
+
+* Check List User
+```
+/user print
+```
+
+#### B. Custom Port IP Services (SSH, Winbox and Disable Port API, API-SSL, FTP, Telnet, WWW, WWW-SSL)
+```
+/ip service
+set telnet disabled=yes
+set ftp disabled=yes
+set www disabled=yes
+set ssh port=23452  \\ Custom Port SSH
+set api disabled=yes
+set winbox port=58291  \\ Custom Port Winbox
+set api-ssl disabled=yes
+```
+
+#### C. Integration MikroTik to Home Router
+```
+/ip dhcp-client
+add default-route-distance=2 disabled=no interface=ether1
+```
+
+#### D. Set DNS Static
+```
+/ip dns
+set allow-remote-requests=yes servers=1.1.1.1,1.0.0.1
+```
+
+#### E. Set Firewall NAT
+```
+/ip firewall nat
+add action=masquerade chain=srcnat out-interface=ether1
+```
+
+#### F. Connect to MikroTik VPS via VPN Tunnel SSTP 
+```
+/interface sstp-client
+add add-default-route=yes connect-to=103.xx.yy.zz:49341 disabled=no http-proxy=0.0.0.0:49341 name=sstp-out1 password=changemenow profile=default-encryption user=sstp.proxmox
+```
+
+#### G. VLAN Management For Proxmox
+```
+/interface vlan
+add interface=ether2 name=vlan12 vlan-id=12
+add interface=ether2 name=vlan13 vlan-id=13
+add interface=ether2 name=vlan2374 vlan-id=2374
+```
+
+#### H. Set Static IP
+```
+/ip address
+add address=172.23.74.65/26 interface=vlan2374 network=172.23.74.64
+add address=192.168.150.2 interface=Lo0 network=192.168.150.2
+add address=192.168.1.2/24 interface=ether1 network=192.168.1.0
+add address=10.13.3.49/28 interface=vlan13 network=10.13.3.48
+add address=10.12.2.49/29 interface=vlan12 network=10.12.2.48
+```
+
+#### I. Setup DHCP Server
+
+* Set IP Pool
+```
+/ip pool
+add name=dhcp_pool1 ranges=172.23.74.66-172.23.74.126
+```
+
+* Set DHCP Server
+``
+/ip dhcp-server
+add address-pool=dhcp_pool1 disabled=no interface=vlan2374 name=dhcp1
+```
+
+* Set DCHP Server Network
+```
+/ip dhcp-server network
+add address=172.23.74.64/26 dns-server=1.1.1.1,1.0.0.1 gateway=172.23.74.65
+```
+
+#### J. Disable Neighbor Discovery
+```
+/ip neighbor discovery-settings
+set discover-interface-list=none protocol=""
+```
+
+#### K. Disable SMB Default MikroTik
+```
+/ip smb
+set allow-guests=no
+```
+
+#### L. Disable Bandwidth-Server
+```
+/tool bandwidth-server
+set authenticate=no enabled=no
+```
+
+#### M. Set System Identity and System Clock
+
+* System Indentity
+```
+/system identity
+set name=INETGW-CHRx86-VPS
+```
+
+* System Clock
+```
+/system clock
+set time-zone-name=Asia/Jakarta
+```
+
 ### Step 3. Routing OSPF
 
 ### Step 4. Routing BGP
