@@ -235,8 +235,10 @@ set default-profile=default-encryption enabled=yes port=49431
 * Setup Profile L2TP
 ```
 /ppp secret
-add local-address=10.13.3.0 name=vpn.l2tp1 password=changeme profile=default-encryption remote-address=10.13.3.1 service=l2tp
-add local-address=10.13.3.2 name=vpn.l2tp2 password=changeme profile=default-encryption remote-address=10.13.3.3 service=l2tp
+add local-address=10.13.3.0 name=vpn.l2tp1 password=changeme profile=default-encryption\
+remote-address=10.13.3.1 service=l2tp
+add local-address=10.13.3.2 name=vpn.l2tp2 password=changeme profile=default-encryption\
+remote-address=10.13.3.3 service=l2tp
 ```
 
 * Setup VPN L2TP
@@ -253,11 +255,10 @@ set enabled=yes ipsec-secret=changemenow use-ipsec=yes
 #### B. MikroTik RB2011 (Router Local)
 
 #### VPN Client SSTP
-* Setup Connection SSTP
 ```
 /interface sstp-client
-add add-default-route=yes connect-to=103.xx.yy.zz:49341 disabled=no http-proxy=vv.xx.yy.zz:49341 name=sstp-out1\
-password=changemenow profile=default-encryption user=sstp.proxmox
+add add-default-route=yes connect-to=103.xx.yy.zz:49341 disabled=no http-proxy=vv.xx.yy.zz:49341\
+name=sstp-out1 password=changemenow profile=default-encryption user=sstp.proxmox
 ```
 
 #### SSTP Client Verification
