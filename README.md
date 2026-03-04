@@ -17,12 +17,12 @@
 
 #### Router MikroTik Configuration
 - Basic Configuration (UserPass Management, Static Route, DNS, DHCP Server, DHCP Client)
-- Firewall NAT and Address-List
+- Firewall NAT and Address-List (Whitelist IP)
 - VPN Tunnel Server L2TP, SSTP and VPN Client 
-- Routing OSPF and Routing Filter
-- Routing BGP and Routing Filter
-- Harderning (Disable and Custom Port IP Service, Disable Bandwidth Server, Disable Mac-Server, Delete Default Admin, Disable Neighbor Discovery, Disable SMB)
-- DNS Over HTTPs
+- Routing OSPF and Routing Filter (Accept and Discard)
+- Routing BGP and Routing Filter (Accept and Discard)
+- Harderning (Disable Bandwidth Server, Disable Mac-Server, Delete Default Admin, Disable Neighbor Discovery, Disable SMB, Disable and Custom Port Service)
+- DNS Over HTTPs (Cloudflare)
 
 #### Proxmox Configuration
 - VLAN Management
