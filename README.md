@@ -53,7 +53,59 @@
 
 ## Configuration Router
 
-### Step 1. MikroTik CHR on VPS
+### Step 1. Basic Configuration
+
+#### A. MikroTik CHR on VPS
+
+##### Username and Password
+
+* Add New User
+```
+/user add name=user.mikrotik password=changemenow group=full
+```
+
+* Check List User
+```
+/user print
+```
+
+##### System Identity and System Clock
+
+* System Indentity
+```
+/system identity
+set name=INETGW-CHRx86-VPS
+```
+
+* System Clock
+```
+/system clock
+set time-zone-name=Asia/Jakarta
+```
+
+##### Static IP
+```
+/ip address
+add address=103.150.191.25/23 interface=ether1 network=103.150.190.0
+```
+
+##### Routing Static
+```
+/ip route
+add distance=1 gateway=103.150.191.25
+```
+
+##### DNS Static
+```
+/ip dns
+set allow-remote-requests=yes servers=1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4
+```
+
+### Step 2. Firewall NAT
+
+### Step 3. VPN Tunnel SSTP and L2TP
+
+
 
 #### Harderning Username and Password (Add New Username, Group Full Admin, and Delete Default Username Admin)
 
@@ -151,17 +203,7 @@ set authenticate=no enabled=no
 
 #### Set System Identity and System Clock
 
-* System Indentity
-```
-/system identity
-set name=INETGW-CHRx86-VPS
-```
 
-* System Clock
-```
-/system clock
-set time-zone-name=Asia/Jakarta
-```
 
 ### Step 2. MikroTik RB2011 (Router Local)
 
