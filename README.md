@@ -279,7 +279,7 @@ set authenticate=no enabled=no
 * System Indentity
 ```
 /system identity
-set name=INETGW-CHRx86-VPS
+set name=COREROUTE-RB2011-CPE
 ```
 
 * System Clock
@@ -289,6 +289,43 @@ set time-zone-name=Asia/Jakarta
 ```
 
 ### Step 3. Routing OSPF
+
+#### A. MikroTik CHR on VPS
+
+
+#### B. MikroTik RB2011 (Router Local)
+
+* Set Loopback
+```
+/interface bridge
+add name=Lo0
+```
+
+* Set IP Loopback
+```
+/ip address
+add address=192.168.150.2 interface=Lo0 network=192.168.150.2
+```
+
+* Set OSPF Instance
+```
+/routing ospf instance
+set [ find default=yes ] router-id=192.168.150.2
+```
+
+* Set OSPF Network Advertise
+```
+/routing ospf network
+add area=backbone network=10.13.3.4/31
+add area=backbone network=192.168.150.2/32
+```
+
+* Set OSPF Routing Filter
+```
+/routing filter
+add action=accept chain=ospf-in prefix-length=31-32
+add action=discard chain=ospf-in
+```
 
 ### Step 4. Routing BGP
 
