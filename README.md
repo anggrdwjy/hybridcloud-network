@@ -329,7 +329,7 @@ add action=discard chain=ospf-in
 
 #### A. MikroTik CHR on VPS
 
-* Set BGP Routing Filter
+#### Set BGP Routing Filter
 ```
 /routing filter
 add action=accept chain=bgp-out prefix=10.13.3.0/31 prefix-length=31
@@ -337,28 +337,33 @@ add action=accept chain=bgp-out prefix=10.13.3.2/31 prefix-length=31
 add action=discard chain=bgp-out
 ```
 
-* Set BGP Instance
+#### Set BGP Instance
 ```
 /routing bgp instance
 set default as=65000 client-to-client-reflection=no router-id=192.168.150.1
 ```
 
-* Set BGP Peer
+#### Set BGP Peer
 ```
 /routing bgp peer
 add name=peer-ROUTECORE out-filter=bgp-out remote-address=192.168.150.2 remote-as=65000 tcp-md5-key=changemenow update-source=Lo0
 ```
 
-* Set BGP Network Advertise
+#### Set BGP Network Advertise
 ```
 /routing bgp network
 add network=10.13.3.0/31 synchronize=no
 add network=10.13.3.2/31 synchronize=no
 ```
 
+#### BGP Verification
+<p align="left">
+<img src="img/bgpinetgw.png">
+</p>
+
 #### B. MikroTik RB2011 (Router Local)
 
-* Set BGP Routing Filter
+#### Set BGP Routing Filter
 ```
 /routing filter
 add action=accept chain=bgp-out prefix=10.13.3.0/31 prefix-length=31
@@ -366,19 +371,19 @@ add action=accept chain=bgp-out prefix=10.13.3.2/31 prefix-length=31
 add action=discard chain=bgp-out
 ```
 
-* Set BGP Instance
+#### Set BGP Instance
 ```
 /routing bgp instance
 set default as=65000 client-to-client-reflection=no router-id=192.168.150.
 ```
 
-* Set BGP Peer
+#### Set BGP Peer
 ```
 /routing bgp peer
 add name=peer-INETGW out-filter=bgp-out remote-address=192.168.150.1 remote-as=65000 tcp-md5-key=changemenow update-source=Lo0
 ```
 
-* Set BGP Network Advertise
+#### Set BGP Network Advertise
 ```
 /routing bgp network
 add network=10.13.3.48/28 synchronize=no
@@ -386,6 +391,11 @@ add network=10.12.2.48/29 synchronize=no
 add network=172.23.74.64/26 synchronize=no
 add network=10.15.0.0/24 synchronize=no
 ```
+
+#### BGP Verification
+<p align="left">
+<img src="img/bgpcore.png">
+</p>
 
 ### Step 6. Harderning
 
