@@ -21,13 +21,13 @@
 - VPN Tunnel Server L2TP, SSTP and VPN Client 
 - Routing OSPF and Routing Filter
 - Routing BGP and Routing Filter
-- Harderning
+- Harderning (Disable and Custom Port IP Service, Disable Bandwidth Server, Disable Mac-Server, Delete Default Admin, Disable Neighbor Discovery, Disable SMB)
 - DNS Over HTTPs
 
 #### Proxmox Configuration
 - VLAN Management
 - VLAN Host Virtualization
-- Harderning
+- Harderning (Disable Root Login, Fail2ban, SSH Custom Port)
 
 ## Build Router on Virtual Private Server
 
@@ -508,12 +508,6 @@ set discover-interface-list=none protocol=""
 ```
 /ip smb
 set allow-guests=no
-```
-
-#### Disable Bandwidth-Server
-```
-/tool bandwidth-server
-set authenticate=no enabled=no
 ```
 
 #### Port Scanning via NMAP
