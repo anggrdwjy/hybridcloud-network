@@ -135,6 +135,11 @@ set allow-remote-requests=yes servers=1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4
 /user print
 ```
 
+#### User Verification
+<p align="left">
+<img src="img/usrcore.png">
+</p>
+
 #### System Identity and System Clock
 
 * System Indentity
@@ -154,6 +159,11 @@ set time-zone-name=Asia/Jakarta
 /ip dhcp-client
 add default-route-distance=2 disabled=no interface=ether1
 ```
+
+#### DHCP Client Verification
+<p align="left">
+<img src="img/dhcpclientcore.png">
+</p>
 
 #### VLAN Management
 ```
@@ -178,6 +188,11 @@ add address=10.12.2.49/29 interface=vlan12 network=10.12.2.48
 set allow-remote-requests=yes servers=1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4
 ```
 
+#### DNS Verification
+<p align="left">
+<img src="img/dnscore.png">
+</p>
+
 #### DHCP Server
 * Set IP Pool
 ```
@@ -197,7 +212,7 @@ add address-pool=dhcp_pool1 disabled=no interface=vlan2374 name=dhcp1
 add address=172.23.74.64/26 dns-server=1.1.1.1,1.0.0.1 gateway=172.23.74.65
 ```
 
-### Step 2. Firewall NAT
+## Step 2. Firewall NAT
 
 #### A. MikroTik CHR on VPS
 
@@ -245,7 +260,7 @@ add address=10.15.0.0/24 list=access-list
 <img src="img/aclcore.png">
 </p>
 
-### Step 3. VPN Tunnel SSTP and L2TP
+## Step 3. VPN Tunnel SSTP and L2TP
 
 #### A. MikroTik CHR on VPS
 
