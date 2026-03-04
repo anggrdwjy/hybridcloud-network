@@ -18,7 +18,7 @@
 
 ### MikroTik Configuration 
 - Static IP 
-- DHCP Server and DHCP Client
+- DHCP Server, DHCP Client
 - Tunneling VPN SSTP, L2TP
 - VLAN Management
 - Routing Static, OSPF, BGP, Route Filter
