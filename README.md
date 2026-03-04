@@ -553,7 +553,7 @@ add action=dst-nat chain=dstnat dst-port=53 protocol=udp to-addresses=1.1.1.1 to
 
 ## Configuration Proxmox
 
-### Static IP and VLAN Configuration Proxmox
+### A. Static IP and VLAN Configuration Proxmox
 
 #### IP Configuration Proxmox, Directory /etc/network/interfaces
 ```
@@ -583,7 +583,7 @@ iface vlan13 inet static
 <img src="img/proxinetverf.png">
 </p>
 
-### VLAN Virtual-Machine Testing
+### B. VLAN Virtual-Machine Testing
 
 #### Test 1. Static IP LXC Container
 <p align="left">
@@ -605,6 +605,25 @@ iface vlan13 inet static
 <img src="img/proxlxcdhcptest.png">
 </p>
 
+#### Test 3. Static IP Kernel-Based Virtual Machine (KVM)
+<p align="left">
+<img src="img/proxkvmstatic.png">
+</p>
+
+#### Verification LXC Container
+<p align="left">
+<img src="img/proxkvmstatictest.png">
+</p>
+
+#### Test 4. DHCP IP Kernel-Based Virtual Machine (KVM)
+<p align="left">
+<img src="img/proxkvmdhcp.png">
+</p>
+
+#### Verification LXC Container
+<p align="left">
+<img src="img/proxkvmdhcptest.png">
+</p>
 
 ### Harderning
 
