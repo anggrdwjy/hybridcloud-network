@@ -1,11 +1,9 @@
 ## Overview Network Technology
-
 <p align="center">
 <img src="img/banner.png">
 </p>
 
 ### Information
-
 - Virtual Private Server (AWS/GCP/DigitalOcean/Hostinger/Local Provider VPS)
 - Spesification VPS 1 CPU, 1 RAM, 30GB Storage Include Public IP
 - OS Virtual Private Server, MikroTik RoS 6.49.xx or Newer
@@ -17,7 +15,7 @@
 
 ## Network Configuration Scope
 
-### Router MikroTik Configuration
+#### Router MikroTik Configuration
 * Basic Configuration (UserPass Management, Static Route, DNS, DHCP Server, DHCP Client)
 * Firewall NAT and Address-List
 * VPN Tunnel Server L2TP, SSTP and VPN Client 
@@ -26,7 +24,7 @@
 * Harderning
 * DNS Over HTTPs
 
-### Proxmox Configuration
+#### Proxmox Configuration
 - VLAN Management
 - VLAN Host Virtualization
 - Harderning
@@ -54,7 +52,6 @@
 #### A. MikroTik CHR on VPS
 
 #### Username and Password
-
 * Add New User
 ```
 /user add name=user.mikrotik password=changemenow group=full
@@ -71,7 +68,6 @@
 </p>
 
 #### System Identity and System Clock
-
 * System Indentity
 ```
 /system identity
@@ -120,7 +116,6 @@ set allow-remote-requests=yes servers=1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4
 #### B. MikroTik RB2011 (Router Local)
 
 #### Username and Password
-
 * Add New User
 ```
 /user add name=user.mikrotikrb password=changemenow group=full
@@ -132,7 +127,6 @@ set allow-remote-requests=yes servers=1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4
 ```
 
 #### System Identity and System Clock
-
 * System Indentity
 ```
 /system identity
