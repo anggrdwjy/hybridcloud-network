@@ -157,6 +157,25 @@ add address=10.12.2.49/29 interface=vlan12 network=10.12.2.48
 set allow-remote-requests=yes servers=1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4
 ```
 
+#### DHCP Server
+* Set IP Pool
+```
+/ip pool
+add name=dhcp_pool1 ranges=172.23.74.66-172.23.74.126
+```
+
+* Set DHCP Server
+```
+/ip dhcp-server
+add address-pool=dhcp_pool1 disabled=no interface=vlan2374 name=dhcp1
+```
+
+* Set DCHP Server Network
+```
+/ip dhcp-server network
+add address=172.23.74.64/26 dns-server=1.1.1.1,1.0.0.1 gateway=172.23.74.65
+```
+
 ### Step 2. Firewall NAT
 
 #### A. MikroTik CHR on VPS
@@ -199,6 +218,10 @@ add address=10.15.0.0/24 list=access-list
 #### A. MikroTik CHR on VPS
 
 #### B. MikroTik RB2011 (Router Local)
+
+
+
+
 
 #### Harderning Username and Password (Add New Username, Group Full Admin, and Delete Default Username Admin)
 
@@ -261,8 +284,6 @@ add local-address=10.13.3.2 name=vpn.l2tp2 password=changeme profile=default-enc
 set enabled=yes ipsec-secret=changemenow use-ipsec=yes
 ```
 
-#### Setup Firewall NAT (Set Out Interface and SRC-NAT to Public IP)
-
 
 #### Disable Neighbor Discovery
 ```
@@ -319,17 +340,6 @@ set api-ssl disabled=yes
 
 
 
-#### Set DNS Static
-```
-/ip dns
-set allow-remote-requests=yes servers=1.1.1.1,1.0.0.1
-```
-
-#### Set Firewall NAT
-```
-/ip firewall nat
-add action=masquerade chain=srcnat out-interface=ether1
-```
 
 #### Connect to MikroTik VPS via VPN Tunnel SSTP 
 ```
@@ -339,25 +349,7 @@ add add-default-route=yes connect-to=103.xx.yy.zz:49341 disabled=no http-proxy=0
 
 
 
-#### Setup DHCP Server
 
-* Set IP Pool
-```
-/ip pool
-add name=dhcp_pool1 ranges=172.23.74.66-172.23.74.126
-```
-
-* Set DHCP Server
-```
-/ip dhcp-server
-add address-pool=dhcp_pool1 disabled=no interface=vlan2374 name=dhcp1
-```
-
-* Set DCHP Server Network
-```
-/ip dhcp-server network
-add address=172.23.74.64/26 dns-server=1.1.1.1,1.0.0.1 gateway=172.23.74.65
-```
 
 #### Disable Neighbor Discovery
 ```
