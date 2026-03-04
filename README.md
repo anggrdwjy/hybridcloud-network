@@ -3,7 +3,7 @@
 <img src="img/banner.png">
 </p>
 
-### Information
+#### Information
 - Virtual Private Server (AWS/GCP/DigitalOcean/Hostinger/Local Provider VPS)
 - Spesification VPS 1 CPU, 1 RAM, 30GB Storage Include Public IP
 - OS Virtual Private Server, MikroTik RoS 6.49.xx or Newer
@@ -16,13 +16,13 @@
 ## Network Configuration Scope
 
 #### Router MikroTik Configuration
-* Basic Configuration (UserPass Management, Static Route, DNS, DHCP Server, DHCP Client)
-* Firewall NAT and Address-List
-* VPN Tunnel Server L2TP, SSTP and VPN Client 
-* Routing OSPF and Routing Filter
-* Routing BGP and Routing Filter
-* Harderning
-* DNS Over HTTPs
+- Basic Configuration (UserPass Management, Static Route, DNS, DHCP Server, DHCP Client)
+- Firewall NAT and Address-List
+- VPN Tunnel Server L2TP, SSTP and VPN Client 
+- Routing OSPF and Routing Filter
+- Routing BGP and Routing Filter
+- Harderning
+- DNS Over HTTPs
 
 #### Proxmox Configuration
 - VLAN Management
@@ -31,12 +31,12 @@
 
 ## Build Router on Virtual Private Server
 
-### Setup Virtual Private Server
+#### Setup Virtual Private Server
 - Order VPS (AWS/GCP/DigitalOcean/Hostinger/Local Provider VPS)
 - Change type OS MikroTik CHRx86 or Ubuntu Newer (Special Case VPS)
 - Access VPS via SSH from Public IP or Console from platform
 
-### Install MikroTik on Ubuntu VPS (Special Case VPS)
+#### Install MikroTik on Ubuntu VPS (Special Case VPS)
 - Access VPS via SSH from Public IP
 - Update Ubuntu `apt update && apt upgrade -y`
 - Install Git `apt install git -y`
