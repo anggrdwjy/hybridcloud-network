@@ -57,10 +57,6 @@
 
 #### A. Harderning Username and Password (Add New Username, Group Full Admin, and Delete Default Username Admin)
 
-<p align="left">
-<img src="img/user-list.png">
-</p>
-
 * Add New User
 ```
 /user add name=user.mikrotik password=changemenow group=full
