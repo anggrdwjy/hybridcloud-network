@@ -576,7 +576,6 @@ iface vlan13 inet static
         address 10.13.3.50/28
         gateway 10.13.3.49
         vlan-raw-device vmbr0
-
 ```
 
 #### Verification
