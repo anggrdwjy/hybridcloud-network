@@ -69,12 +69,17 @@
 /user print
 ```
 
+#### User Verification
+<p align="left">
+<img src="img/usrinetgw.png">
+</p>
+
 #### System Identity and System Clock
 
 * System Indentity
 ```
 /system identity
-set name=INETGW-CHRx86-VPS
+set name=INETGW-xxx-yy
 ```
 
 * System Clock
@@ -83,23 +88,38 @@ set name=INETGW-CHRx86-VPS
 set time-zone-name=Asia/Jakarta
 ```
 
+#### Clock Verification
+<p align="left">
+<img src="img/clockinetgw.png">
+</p>
+
 #### Static IP
 ```
 /ip address
-add address=103.150.191.25/23 interface=ether1 network=103.150.190.0
+add address=103.xx.yy.zz/2x interface=ether1 network=103.xx.yy.zz
 ```
 
 #### Routing Static
 ```
 /ip route
-add distance=1 gateway=103.150.191.25
+add distance=1 gateway=103.xx.yy.zz
 ```
+
+#### Route Static Verification
+<p align="left">
+<img src="img/routeinetgw.png">
+</p>
 
 #### DNS Static
 ```
 /ip dns
 set allow-remote-requests=yes servers=1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4
 ```
+
+#### DNS Verification
+<p align="left">
+<img src="img/dnsinetgw.png">
+</p>
 
 #### B. MikroTik RB2011 (Router Local)
 
