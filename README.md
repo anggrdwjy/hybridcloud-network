@@ -539,6 +539,15 @@ add action=dst-nat chain=dstnat dst-port=53 protocol=udp to-addresses=1.1.1.1 to
 <img src="img/dnsleak.png">
 </p>
 
+#### Check DNS Linux
+<p align="left">
+<img src="img/dnschecklin.png">
+</p>
+
+#### Check DNS Windows
+<p align="left">
+<img src="img/dnscheckwin.png">
+</p>
 
 ## Configuration Proxmox
 
