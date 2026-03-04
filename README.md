@@ -61,17 +61,17 @@
 <img src="img/user-list.png">
 </p>
 
-#### Add New User
+#### - Add New User
 ```
 /user add name=user.mikrotik password=changemenow group=full
 ```
 
-#### Remove User (Admin Default)
+#### - Remove User (Admin Default)
 ```
 /user remove admin
 ```
 
-#### Check List User
+#### - Check List User
 ```
 /user print
 ```
