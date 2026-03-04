@@ -245,14 +245,32 @@ add local-address=10.13.3.2 name=vpn.l2tp2 password=changeme profile=default-enc
 set enabled=yes ipsec-secret=changemenow use-ipsec=yes
 ```
 
+#### VPN Server Verification
+<p align="left">
+<img src="img/pppserver.png">
+</p>
+
 #### B. MikroTik RB2011 (Router Local)
 
 #### VPN Client SSTP
 * Setup Connection SSTP
 ```
 /interface sstp-client
-add add-default-route=yes connect-to=103.xx.yy.zz:49341 disabled=no http-proxy=0.0.0.0:49341 name=sstp-out1 password=changemenow profile=default-encryption user=sstp.proxmox
+add add-default-route=yes connect-to=103.xx.yy.zz:49341 disabled=no http-proxy=vv.xx.yy.zz:49341 name=sstp-out1\
+password=changemenow profile=default-encryption user=sstp.proxmox
 ```
+
+#### SSTP Client Verification
+<p align="left">
+<img src="img/sstpclient.png">
+</p>
+
+#### C. Windows L2TP Client (VPN Access)
+
+#### L2TP Client Verification
+<p align="left">
+<img src="img/l2tpclient.png">
+</p>
 
 ## Step 4. Routing OSPF
 
