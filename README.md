@@ -102,7 +102,6 @@ set allow-remote-requests=yes servers=1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4
 ```
 
 #### B. MikroTik RB2011 (Router Local)
-
 #### Username and Password
 
 * Add New User
@@ -162,11 +161,44 @@ set allow-remote-requests=yes servers=1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4
 
 #### A. MikroTik CHR on VPS
 
+#### Firewall NAT
+```
+/ip firewall nat
+add action=src-nat chain=srcnat out-interface=ether1 src-address-list=access-list to-addresses=103.xx.yy.zz
+```
+
+#### Firewall Address-list
+```
+/ip firewall address-list
+add address=10.13.3.0/31 list=access-list
+add address=10.13.3.2/31 list=access-list
+add address=10.13.3.48/28 list=access-list
+add address=10.12.2.48/29 list=access-list
+add address=172.23.74.64/26 list=access-list
+```
+
 #### B. MikroTik RB2011 (Router Local)
+
+#### Firewall NAT
+```
+/ip firewall nat
+add action=masquerade chain=srcnat out-interface=ether1 src-address-list=access-list
+```
+
+#### Firewall Address-list
+```
+/ip firewall address-list
+add address=10.13.3.48/28 list=access-list
+add address=10.12.2.48/29 list=access-list
+add address=172.23.74.64/26 list=access-list
+add address=10.15.0.0/24 list=access-list
+```
 
 ### Step 3. VPN Tunnel SSTP and L2TP
 
+#### A. MikroTik CHR on VPS
 
+#### B. MikroTik RB2011 (Router Local)
 
 #### Harderning Username and Password (Add New Username, Group Full Admin, and Delete Default Username Admin)
 
@@ -230,10 +262,7 @@ set enabled=yes ipsec-secret=changemenow use-ipsec=yes
 ```
 
 #### Setup Firewall NAT (Set Out Interface and SRC-NAT to Public IP)
-```
-/ip firewall nat
-add action=src-nat chain=srcnat out-interface=ether1 to-addresses=103.xx.yy.zz
-```
+
 
 #### Disable Neighbor Discovery
 ```
