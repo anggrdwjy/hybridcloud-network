@@ -129,11 +129,6 @@ set allow-remote-requests=yes servers=1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4
 /user print
 ```
 
-#### User Verification
-<p align="left">
-<img src="img/usrcore.png">
-</p>
-
 #### System Identity and System Clock
 
 * System Indentity
