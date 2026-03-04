@@ -424,3 +424,37 @@ set allow-guests=no
 /tool bandwidth-server
 set authenticate=no enabled=no
 ```
+
+### Step 7. DNS over HTTPs
+
+#### Import Cert
+```
+/tool fetch url=https://curl.se/ca/cacert.pem
+/certificate import file-name=cacert.pem passphrase=""
+/file remove cacert.pem
+```
+
+#### DNS Configuration
+```
+/ip dns
+set use-doh-server=https://cloudflare-dns.com/dns-query verify-doh-cert=yes
+/ip dns static
+add address=104.16.248.249 name=cloudflare-dns.com
+add address=104.16.249.249 name=cloudflare-dns.com
+```
+
+#### Firewall Forwarding to Cloudflare
+```
+/ip firewall nat
+add action=dst-nat chain=dstnat dst-port=53 protocol=tcp to-addresses=1.1.1.1 to-ports=53
+add action=dst-nat chain=dstnat dst-port=53 protocol=udp to-addresses=1.1.1.1 to-ports=53
+```
+
+#### Check DNS Leak
+<p align="left">
+<img src="img/dnsleak.png">
+</p>
+
+
+## Configuration Proxmox
+
