@@ -245,7 +245,7 @@ add name=dhcp_pool1 ranges=172.23.74.66-172.23.74.126
 ```
 
 * Set DHCP Server
-``
+```
 /ip dhcp-server
 add address-pool=dhcp_pool1 disabled=no interface=vlan2374 name=dhcp1
 ```
