@@ -61,6 +61,21 @@
 <img src="img/user-list.png">
 </p>
 
+#### Add New User
+```
+/user add name=user.mikrotik password=changemenow group=full
+```
+
+#### Remove User (Admin Default)
+```
+/user remove admin
+```
+
+#### Check List User
+```
+/user print
+```
+
 #### Custom Port IP Services (SSH, Winbox and Disable Port API, API-SSL, FTP, Telnet, WWW, WWW-SSL)
 ```
 /ip service
