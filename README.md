@@ -389,8 +389,9 @@ add network=10.15.0.0/24 synchronize=no
 
 ### Step 6. Harderning
 
-#### MikroTik CHR on VPS and MikroTik RB2011 (Router Local)
-* Custom Port IP Services
+#### MikroTik CHR on VPS and MikroTik RB2011
+
+#### Custom Port IP Services
 ```
 /ip service
 set telnet disabled=yes
@@ -402,28 +403,39 @@ set winbox port=58291  \\ Custom Port Winbox
 set api-ssl disabled=yes
 ```
 
-* Delete Default Admin
+#### Delete Default Admin
 ```
 /user remove admin
 ```
 
-* Disable Neighbor Discovery
+#### Disable Neighbor Discovery
 ```
 /ip neighbor discovery-settings
 set discover-interface-list=none protocol=""
 ```
 
-* Disable SMB Default
+#### Disable SMB Default
 ```
 /ip smb
 set allow-guests=no
 ```
 
-* Disable Bandwidth-Server
+#### Disable Bandwidth-Server
 ```
 /tool bandwidth-server
 set authenticate=no enabled=no
 ```
+
+#### Port Scanning via NMAP
+<p align="left">
+<img src="img/portscan.png">
+</p>
+
+#### SSH Testing (Default User MikroTik)
+<p align="left">
+<img src="img/sshtest.png">
+</p>
+
 
 ### Step 7. DNS over HTTPs (Configuration on MikroTik VPS)
 
