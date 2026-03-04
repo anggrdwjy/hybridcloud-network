@@ -40,14 +40,16 @@
 - Access VPS via SSH from Public IP
 - Update Ubuntu `apt update && apt upgrade -y`
 - Install Git `apt install git -y`
-- Clone Script Install MikroTik on Ubuntu VPS, Access Detail Documentation : "https://github.com/anggrdwjy/mikrotik-ubuntukvm.git"
+- Clone Script Install MikroTik on Ubuntu VPS, Detail Documentation : "https://github.com/anggrdwjy/mikrotik-ubuntukvm.git"
 - First Step, Access MikroTik via Winbox from Public IP
 - Step two, Change New Password (Please Harderning Username Password First)
 - Check and Validation License, Install License P1 or Upgrade License
 - Ping 1.1.1.1 or 8.8.8.8 from MikroTik Router
 - Request Time Out (RTO) Ping, Check your DNS from MikroTIk Router until Replay Response
 
-## Step 1. Basic Configuration
+## Router Configuration
+
+### Step 1. Basic Configuration
 
 #### A. MikroTik CHR on VPS
 
@@ -197,7 +199,7 @@ add address-pool=dhcp_pool1 disabled=no interface=vlan2374 name=dhcp1
 add address=172.23.74.64/26 dns-server=1.1.1.1,1.0.0.1 gateway=172.23.74.65
 ```
 
-## Step 2. Firewall NAT
+### Step 2. Firewall NAT
 
 #### A. MikroTik CHR on VPS
 
@@ -245,7 +247,7 @@ add address=10.15.0.0/24 list=access-list
 <img src="img/aclcore.png">
 </p>
 
-## Step 3. VPN Tunnel SSTP and L2TP
+### Step 3. VPN Tunnel SSTP and L2TP
 
 #### A. MikroTik CHR on VPS
 
@@ -305,7 +307,7 @@ name=sstp-out1 password=changemenow profile=default-encryption user=sstp.proxmox
 <img src="img/l2tpclient.png">
 </p>
 
-## Step 4. Routing OSPF
+### Step 4. Routing OSPF
 
 #### A. MikroTik CHR on VPS
 
@@ -385,7 +387,7 @@ add action=discard chain=ospf-in
 <img src="img/ospfcore.png">
 </p>
 
-## Step 5. Routing BGP
+### Step 5. Routing BGP
 
 #### A. MikroTik CHR on VPS
 
@@ -459,7 +461,7 @@ add network=10.15.0.0/24 synchronize=no
 <img src="img/bgpcore.png">
 </p>
 
-## Step 6. Harderning
+### Step 6. Harderning
 
 #### MikroTik CHR on VPS and MikroTik RB2011
 
@@ -509,7 +511,7 @@ set authenticate=no enabled=no
 </p>
 
 
-## Step 7. DNS over HTTPs
+### Step 7. DNS over HTTPs
 
 #### Import Cert
 ```
@@ -550,4 +552,34 @@ add action=dst-nat chain=dstnat dst-port=53 protocol=udp to-addresses=1.1.1.1 to
 </p>
 
 ## Configuration Proxmox
+
+### Static IP and VLAN Configuration Proxmox
+
+#### IP Configuration Proxmox, Directory /etc/network/interfaces
+```
+auto lo
+iface lo inet loopback
+
+auto enp3s0
+iface enp3s0 inet manual
+
+auto vmbr0
+iface vmbr0 inet manual
+        bridge-ports enp3s0
+        bridge-stp off
+        bridge-fd 0
+        bridge-vlan-aware yes
+        bridge-vids 2-4094
+
+auto vlan13
+iface vlan13 inet static
+        address 10.13.3.50/28
+        gateway 10.13.3.49
+        vlan-raw-device vmbr0
+
+```
+
+### VLAN Virtualization Host
+
+### Harderning
 
