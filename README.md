@@ -18,12 +18,13 @@
 ## Network Configuration Scope
 
 ### Router MikroTik Configuration
-* Basic Configuration (UserPass Management, Static Route, DNS Over HTTPs, DHCP Server, DHCP Client)
+* Basic Configuration (UserPass Management, Static Route, DNS, DHCP Server, DHCP Client)
 * Firewall NAT and Address-List
 * VPN Tunnel Server L2TP, SSTP and VPN Client 
 * Routing OSPF and Routing Filter
 * Routing BGP and Routing Filter
 * Harderning
+* DNS Over HTTPs
 
 ### Proxmox Configuration
 - VLAN Management
@@ -514,7 +515,7 @@ set authenticate=no enabled=no
 </p>
 
 
-## Step 7. DNS over HTTPs (Configuration on MikroTik VPS)
+## Step 7. DNS over HTTPs
 
 #### Import Cert
 ```
