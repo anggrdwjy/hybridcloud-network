@@ -425,7 +425,7 @@ set allow-guests=no
 set authenticate=no enabled=no
 ```
 
-### Step 7. DNS over HTTPs
+### Step 7. DNS over HTTPs (Configuration on MikroTik VPS0
 
 #### Import Cert
 ```
