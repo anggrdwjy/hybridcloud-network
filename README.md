@@ -586,5 +586,26 @@ iface vlan13 inet static
 
 ### VLAN Virtual-Machine Testing
 
+#### Test 1. Static IP LXC Container
+<p align="left">
+<img src="img/proxlxcstatic.png">
+</p>
+
+#### Verification LXC Container
+<p align="left">
+<img src="img/proxlxcstatictest.png">
+</p>
+
+#### Test 2. DHCP LXC Container
+<p align="left">
+<img src="img/proxlxcdhcp.png">
+</p>
+
+#### Verification LXC Container
+<p align="left">
+<img src="img/proxlxcdhcptest.png">
+</p>
+
+
 ### Harderning
 
