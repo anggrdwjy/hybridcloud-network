@@ -57,7 +57,7 @@
 
 #### A. MikroTik CHR on VPS
 
-##### Username and Password
+#### Username and Password
 
 * Add New User
 ```
@@ -69,7 +69,7 @@
 /user print
 ```
 
-##### System Identity and System Clock
+#### System Identity and System Clock
 
 * System Indentity
 ```
@@ -83,25 +83,86 @@ set name=INETGW-CHRx86-VPS
 set time-zone-name=Asia/Jakarta
 ```
 
-##### Static IP
+#### Static IP
 ```
 /ip address
 add address=103.150.191.25/23 interface=ether1 network=103.150.190.0
 ```
 
-##### Routing Static
+#### Routing Static
 ```
 /ip route
 add distance=1 gateway=103.150.191.25
 ```
 
-##### DNS Static
+#### DNS Static
+```
+/ip dns
+set allow-remote-requests=yes servers=1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4
+```
+
+#### B. MikroTik RB2011 (Router Local)
+
+#### Username and Password
+
+* Add New User
+```
+/user add name=user.mikrotikrb password=changemenow group=full
+```
+
+* Check List User
+```
+/user print
+```
+
+#### System Identity and System Clock
+
+* System Indentity
+```
+/system identity
+set name=ROUTECORE-RB2011-CPE
+```
+
+* System Clock
+```
+/system clock
+set time-zone-name=Asia/Jakarta
+```
+
+#### DHCP Client
+```
+/ip dhcp-client
+add default-route-distance=2 disabled=no interface=ether1
+```
+
+#### VLAN Management
+```
+/interface vlan
+add interface=ether2 name=vlan12 vlan-id=12
+add interface=ether2 name=vlan13 vlan-id=13
+add interface=ether2 name=vlan2374 vlan-id=2374
+```
+
+#### Static IP
+```
+/ip address
+add address=172.23.74.65/26 interface=vlan2374 network=172.23.74.64
+add address=192.168.1.2/24 interface=ether1 network=192.168.1.0
+add address=10.13.3.49/28 interface=vlan13 network=10.13.3.48
+add address=10.12.2.49/29 interface=vlan12 network=10.12.2.48
+```
+
+#### DNS Static
 ```
 /ip dns
 set allow-remote-requests=yes servers=1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4
 ```
 
 ### Step 2. Firewall NAT
+
+#### A. MikroTik CHR on VPS
+
+#### B. MikroTik RB2011 (Router Local)
 
 ### Step 3. VPN Tunnel SSTP and L2TP
 
@@ -136,17 +197,8 @@ set winbox port=58291  \\ Custom Port Winbox
 set api-ssl disabled=yes
 ```
 
-#### Setup Static Routing (Set Public IP and Routing to 0.0.0.0/0)
-```
-/ip route
-add distance=1 gateway=103.xx.yy.zzz
-```
 
-#### Setup DNS (Set 1.1.1.1, 1.0.0.1 or 8.8.8.8, 8.8.4.4)
-```
-/ip dns
-set allow-remote-requests=yes servers=1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4
-```
+
 
 #### Setup VPN SSTP Tunnel (For Between Routers and Custom Port SSTP)
 
@@ -236,11 +288,7 @@ set winbox port=58291  \\ Custom Port Winbox
 set api-ssl disabled=yes
 ```
 
-#### Integration MikroTik to Home Router
-```
-/ip dhcp-client
-add default-route-distance=2 disabled=no interface=ether1
-```
+
 
 #### Set DNS Static
 ```
@@ -260,22 +308,7 @@ add action=masquerade chain=srcnat out-interface=ether1
 add add-default-route=yes connect-to=103.xx.yy.zz:49341 disabled=no http-proxy=0.0.0.0:49341 name=sstp-out1 password=changemenow profile=default-encryption user=sstp.proxmox
 ```
 
-#### VLAN Management For Proxmox
-```
-/interface vlan
-add interface=ether2 name=vlan12 vlan-id=12
-add interface=ether2 name=vlan13 vlan-id=13
-add interface=ether2 name=vlan2374 vlan-id=2374
-```
 
-#### Set Static IP
-```
-/ip address
-add address=172.23.74.65/26 interface=vlan2374 network=172.23.74.64
-add address=192.168.1.2/24 interface=ether1 network=192.168.1.0
-add address=10.13.3.49/28 interface=vlan13 network=10.13.3.48
-add address=10.12.2.49/29 interface=vlan12 network=10.12.2.48
-```
 
 #### Setup DHCP Server
 
