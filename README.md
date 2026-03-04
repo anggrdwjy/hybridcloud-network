@@ -494,6 +494,7 @@ add action=add-src-to-address-list address-list=black-list address-list-timeout=
 </p>
 
 #### Custom Port IP Services
+* Custom Port and Disable Services
 ```
 /ip service
 set telnet disabled=yes
@@ -504,6 +505,11 @@ set api disabled=yes
 set winbox port=58291  \\ Custom Port Winbox
 set api-ssl disabled=yes
 ```
+
+* Port Scanning via NMAP
+<p align="left">
+<img src="img/portscan.png">
+</p>
 
 #### Disable Bandwidth Server
 ```
@@ -522,9 +528,15 @@ set enabled=no
 ```
 
 #### Delete Default Admin
+* Disable or Delete Default Login 
 ```
 /user remove admin
 ```
+
+* SSH Testing (Default User MikroTik)
+<p align="left">
+<img src="img/sshtest.png">
+</p>
 
 #### Disable Neighbor Discovery
 ```
@@ -537,17 +549,6 @@ set discover-interface-list=none protocol=""
 /ip smb
 set allow-guests=no
 ```
-
-#### Port Scanning via NMAP
-<p align="left">
-<img src="img/portscan.png">
-</p>
-
-#### SSH Testing (Default User MikroTik)
-<p align="left">
-<img src="img/sshtest.png">
-</p>
-
 
 ### Step 7. DNS over HTTPs
 
