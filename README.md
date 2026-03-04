@@ -606,23 +606,47 @@ iface vlan13 inet static
 </p>
 
 #### Test 3. Static IP Kernel-Based Virtual Machine (KVM)
+
+#### Configuration KVM Linux
 <p align="left">
 <img src="img/proxkvmstatic.png">
 </p>
 
-#### Verification LXC Container
+#### Configuration KVM Windows
+<p align="left">
+<img src="img/proxkvmstaticwin.png">
+</p>
+
+#### Verification KVM Linux
 <p align="left">
 <img src="img/proxkvmstatictest.png">
 </p>
 
+#### Verification KVM Windows
+<p align="left">
+<img src="img/proxkvmstatictestwin.png">
+</p>
+
 #### Test 4. DHCP IP Kernel-Based Virtual Machine (KVM)
+
+#### Configuration KVM Linux
 <p align="left">
 <img src="img/proxkvmdhcp.png">
 </p>
 
-#### Verification LXC Container
+#### Configuration KVM Windows
+<p align="left">
+<img src="img/proxkvmdhcpwin.png">
+</p>
+
+#### Verification KVM Linux
 <p align="left">
 <img src="img/proxkvmdhcptest.png">
+</p>
+
+#### Verification KVM Windows
+<p align="left">
+<img src="img/proxkvmdhcptestwin.png">
 </p>
 
 ### Harderning
