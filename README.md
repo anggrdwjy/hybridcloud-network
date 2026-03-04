@@ -55,7 +55,7 @@
 
 ### Step 1. MikroTik CHR on VPS
 
-#### A. Harderning Username and Password (Add New Username, Group Full Admin, and Delete Default Username Admin)
+#### Harderning Username and Password (Add New Username, Group Full Admin, and Delete Default Username Admin)
 
 * Add New User
 ```
@@ -72,7 +72,7 @@
 /user print
 ```
 
-#### B. Custom Port IP Services (SSH, Winbox and Disable Port API, API-SSL, FTP, Telnet, WWW, WWW-SSL)
+#### Custom Port IP Services (SSH, Winbox and Disable Port API, API-SSL, FTP, Telnet, WWW, WWW-SSL)
 ```
 /ip service
 set telnet disabled=yes
@@ -84,19 +84,19 @@ set winbox port=58291  \\ Custom Port Winbox
 set api-ssl disabled=yes
 ```
 
-#### C. Setup Static Routing (Set Public IP and Routing to 0.0.0.0/0)
+#### Setup Static Routing (Set Public IP and Routing to 0.0.0.0/0)
 ```
 /ip route
 add distance=1 gateway=103.xx.yy.zzz
 ```
 
-#### D. Setup DNS (Set 1.1.1.1, 1.0.0.1 or 8.8.8.8, 8.8.4.4)
+#### Setup DNS (Set 1.1.1.1, 1.0.0.1 or 8.8.8.8, 8.8.4.4)
 ```
 /ip dns
 set allow-remote-requests=yes servers=1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4
 ```
 
-#### E. Setup VPN SSTP Tunnel (For Between Routers and Custom Port SSTP)
+#### Setup VPN SSTP Tunnel (For Between Routers and Custom Port SSTP)
 
 * Setup Profile SSTP
 ```
@@ -110,7 +110,7 @@ add local-address=10.13.3.4 name=sstp.proxmox password=changeme profile=default-
 set default-profile=default-encryption enabled=yes port=49431
 ```
 
-#### F. Setup VPN L2TP Tunnel (For VPN Access to Local Network)
+#### Setup VPN L2TP Tunnel (For VPN Access to Local Network)
 
 * Setup Profile L2TP
 ```
@@ -125,31 +125,31 @@ add local-address=10.13.3.2 name=vpn.l2tp2 password=changeme profile=default-enc
 set enabled=yes ipsec-secret=changemenow use-ipsec=yes
 ```
 
-#### G. Setup Firewall NAT (Set Out Interface and SRC-NAT to Public IP)
+#### Setup Firewall NAT (Set Out Interface and SRC-NAT to Public IP)
 ```
 /ip firewall nat
 add action=src-nat chain=srcnat out-interface=ether1 to-addresses=103.xx.yy.zz
 ```
 
-#### H. Disable Neighbor Discovery
+#### Disable Neighbor Discovery
 ```
 /ip neighbor discovery-settings
 set discover-interface-list=none protocol=""
 ```
 
-#### I. Disable SMB Default MikroTik
+#### Disable SMB Default MikroTik
 ```
 /ip smb
 set allow-guests=no
 ```
 
-#### J. Disable Bandwidth-Server
+#### Disable Bandwidth-Server
 ```
 /tool bandwidth-server
 set authenticate=no enabled=no
 ```
 
-#### K. Set System Identity and System Clock
+#### Set System Identity and System Clock
 
 * System Indentity
 ```
@@ -165,7 +165,7 @@ set time-zone-name=Asia/Jakarta
 
 ### Step 2. MikroTik RB2011 (Router Local)
 
-##### Harderning Username and Password (Add New Username, Group Full Admin, and Delete Default Username Admin)
+#### Harderning Username and Password (Add New Username, Group Full Admin, and Delete Default Username Admin)
 
 * Add New User
 ```
@@ -182,7 +182,7 @@ set time-zone-name=Asia/Jakarta
 /user print
 ```
 
-##### Custom Port IP Services (SSH, Winbox and Disable Port API, API-SSL, FTP, Telnet, WWW, WWW-SSL)
+#### Custom Port IP Services (SSH, Winbox and Disable Port API, API-SSL, FTP, Telnet, WWW, WWW-SSL)
 ```
 /ip service
 set telnet disabled=yes
@@ -194,31 +194,31 @@ set winbox port=58291  \\ Custom Port Winbox
 set api-ssl disabled=yes
 ```
 
-##### Integration MikroTik to Home Router
+#### Integration MikroTik to Home Router
 ```
 /ip dhcp-client
 add default-route-distance=2 disabled=no interface=ether1
 ```
 
-##### Set DNS Static
+#### Set DNS Static
 ```
 /ip dns
 set allow-remote-requests=yes servers=1.1.1.1,1.0.0.1
 ```
 
-##### Set Firewall NAT
+#### Set Firewall NAT
 ```
 /ip firewall nat
 add action=masquerade chain=srcnat out-interface=ether1
 ```
 
-##### Connect to MikroTik VPS via VPN Tunnel SSTP 
+#### Connect to MikroTik VPS via VPN Tunnel SSTP 
 ```
 /interface sstp-client
 add add-default-route=yes connect-to=103.xx.yy.zz:49341 disabled=no http-proxy=0.0.0.0:49341 name=sstp-out1 password=changemenow profile=default-encryption user=sstp.proxmox
 ```
 
-##### VLAN Management For Proxmox
+#### VLAN Management For Proxmox
 ```
 /interface vlan
 add interface=ether2 name=vlan12 vlan-id=12
@@ -226,7 +226,7 @@ add interface=ether2 name=vlan13 vlan-id=13
 add interface=ether2 name=vlan2374 vlan-id=2374
 ```
 
-##### Set Static IP
+#### Set Static IP
 ```
 /ip address
 add address=172.23.74.65/26 interface=vlan2374 network=172.23.74.64
@@ -235,7 +235,7 @@ add address=10.13.3.49/28 interface=vlan13 network=10.13.3.48
 add address=10.12.2.49/29 interface=vlan12 network=10.12.2.48
 ```
 
-##### Setup DHCP Server
+#### Setup DHCP Server
 
 * Set IP Pool
 ```
@@ -255,25 +255,25 @@ add address-pool=dhcp_pool1 disabled=no interface=vlan2374 name=dhcp1
 add address=172.23.74.64/26 dns-server=1.1.1.1,1.0.0.1 gateway=172.23.74.65
 ```
 
-##### Disable Neighbor Discovery
+#### Disable Neighbor Discovery
 ```
 /ip neighbor discovery-settings
 set discover-interface-list=none protocol=""
 ```
 
-##### Disable SMB Default MikroTik
+#### Disable SMB Default MikroTik
 ```
 /ip smb
 set allow-guests=no
 ```
 
-##### Disable Bandwidth-Server
+#### Disable Bandwidth-Server
 ```
 /tool bandwidth-server
 set authenticate=no enabled=no
 ```
 
-##### Set System Identity and System Clock
+#### Set System Identity and System Clock
 
 * System Indentity
 ```
