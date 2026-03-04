@@ -387,10 +387,40 @@ add network=172.23.74.64/26 synchronize=no
 add network=10.15.0.0/24 synchronize=no
 ```
 
-## Baremetal Server
+### Step 6. Harderning
 
-## Virtualization Host on Baremetal
+#### MikroTik CHR on VPS and MikroTik RB2011 (Router Local)
+* Custom Port IP Services
+```
+/ip service
+set telnet disabled=yes
+set ftp disabled=yes
+set www disabled=yes
+set ssh port=23452  \\ Custom Port SSH
+set api disabled=yes
+set winbox port=58291  \\ Custom Port Winbox
+set api-ssl disabled=yes
+```
 
-## Testing
+* Delete Default Admin
+```
+/user remove admin
+```
 
-## Support
+* Disable Neighbor Discovery
+```
+/ip neighbor discovery-settings
+set discover-interface-list=none protocol=""
+```
+
+* Disable SMB Default
+```
+/ip smb
+set allow-guests=no
+```
+
+* Disable Bandwidth-Server
+```
+/tool bandwidth-server
+set authenticate=no enabled=no
+```
