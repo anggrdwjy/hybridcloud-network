@@ -465,7 +465,7 @@ add network=10.15.0.0/24 synchronize=no
 
 #### MikroTik CHR on VPS and MikroTik RB2011
 
-#### Login user Access-List
+#### Privilege Login Access-List
 <p align="left">
 <img src="img/useracclist.png">
 </p>
