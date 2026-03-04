@@ -16,19 +16,15 @@
 
 ## Network Configuration Scope
 
-### MikroTik Configuration 
-- Static IP 
-- DHCP Server, DHCP Client
-- Tunneling VPN SSTP, L2TP
-- VLAN Management
-- Routing Static, OSPF, BGP, Route Filter
-- Firewall NAT, Port Forwarding
-- User Management
-- Harderning IP Services
-- DNS Over HTTPs (Cloudflare Case)
+### Router MikroTik Configuration
+* Basic Configuration (UserPass Management, Static Route, DNS Over HTTPs, DHCP Server, DHCP Client)
+* Firewall NAT and Address-List
+* VPN Tunnel Server L2TP, SSTP and VPN Client 
+* Routing OSPF and Routing Filter
+* Routing BGP and Routing Filter
+* Harderning
 
 ### Proxmox Configuration
-- Disable Proxmox-Subscription
 - VLAN Management
 - VLAN Host Virtualization
 - Harderning
@@ -50,15 +46,6 @@
 - Check and Validation License, Install License P1 or Upgrade License
 - Ping 1.1.1.1 or 8.8.8.8 from MikroTik Router
 - Request Time Out (RTO) Ping, Check your DNS from MikroTIk Router until Replay Response
-
-## Configuration Router Scope
-
-* Basic Configuration
-* Firewall NAT and Address-List
-* VPN Tunnel Server L2TP, SSTP and VPN Client 
-* Routing OSPF and Routing Filter
-* Routing BGP and Routing Filter
-* Harderning
 
 ## Step 1. Basic Configuration
 
