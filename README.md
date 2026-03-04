@@ -102,6 +102,7 @@ set allow-remote-requests=yes servers=1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4
 ```
 
 #### B. MikroTik RB2011 (Router Local)
+
 #### Username and Password
 
 * Add New User
@@ -217,46 +218,7 @@ add address=10.15.0.0/24 list=access-list
 
 #### A. MikroTik CHR on VPS
 
-#### B. MikroTik RB2011 (Router Local)
-
-
-
-
-
-#### Harderning Username and Password (Add New Username, Group Full Admin, and Delete Default Username Admin)
-
-* Add New User
-```
-/user add name=user.mikrotik password=changemenow group=full
-```
-
-* Remove User (Admin Default)
-```
-/user remove admin
-```
-
-* Check List User
-```
-/user print
-```
-
-#### Custom Port IP Services (SSH, Winbox and Disable Port API, API-SSL, FTP, Telnet, WWW, WWW-SSL)
-```
-/ip service
-set telnet disabled=yes
-set ftp disabled=yes
-set www disabled=yes
-set ssh port=23452  \\ Custom Port SSH
-set api disabled=yes
-set winbox port=58291  \\ Custom Port Winbox
-set api-ssl disabled=yes
-```
-
-
-
-
-#### Setup VPN SSTP Tunnel (For Between Routers and Custom Port SSTP)
-
+#### VPN Server SSTP
 * Setup Profile SSTP
 ```
 /ppp secret
@@ -269,8 +231,7 @@ add local-address=10.13.3.4 name=sstp.proxmox password=changeme profile=default-
 set default-profile=default-encryption enabled=yes port=49431
 ```
 
-#### Setup VPN L2TP Tunnel (For VPN Access to Local Network)
-
+#### VPN Server L2TP
 * Setup Profile L2TP
 ```
 /ppp secret
@@ -284,103 +245,13 @@ add local-address=10.13.3.2 name=vpn.l2tp2 password=changeme profile=default-enc
 set enabled=yes ipsec-secret=changemenow use-ipsec=yes
 ```
 
+#### B. MikroTik RB2011 (Router Local)
 
-#### Disable Neighbor Discovery
-```
-/ip neighbor discovery-settings
-set discover-interface-list=none protocol=""
-```
-
-#### Disable SMB Default MikroTik
-```
-/ip smb
-set allow-guests=no
-```
-
-#### Disable Bandwidth-Server
-```
-/tool bandwidth-server
-set authenticate=no enabled=no
-```
-
-#### Set System Identity and System Clock
-
-
-
-### Step 2. MikroTik RB2011 (Router Local)
-
-#### Harderning Username and Password (Add New Username, Group Full Admin, and Delete Default Username Admin)
-
-* Add New User
-```
-/user add name=user.mikrotikrb password=changemenow group=full
-```
-
-* Remove User (Admin Default)
-```
-/user remove admin
-```
-
-* Check List User
-```
-/user print
-```
-
-#### Custom Port IP Services (SSH, Winbox and Disable Port API, API-SSL, FTP, Telnet, WWW, WWW-SSL)
-```
-/ip service
-set telnet disabled=yes
-set ftp disabled=yes
-set www disabled=yes
-set ssh port=23452  \\ Custom Port SSH
-set api disabled=yes
-set winbox port=58291  \\ Custom Port Winbox
-set api-ssl disabled=yes
-```
-
-
-
-
-#### Connect to MikroTik VPS via VPN Tunnel SSTP 
+#### VPN Client SSTP
+* Setup Connection SSTP
 ```
 /interface sstp-client
 add add-default-route=yes connect-to=103.xx.yy.zz:49341 disabled=no http-proxy=0.0.0.0:49341 name=sstp-out1 password=changemenow profile=default-encryption user=sstp.proxmox
-```
-
-
-
-
-
-#### Disable Neighbor Discovery
-```
-/ip neighbor discovery-settings
-set discover-interface-list=none protocol=""
-```
-
-#### Disable SMB Default MikroTik
-```
-/ip smb
-set allow-guests=no
-```
-
-#### Disable Bandwidth-Server
-```
-/tool bandwidth-server
-set authenticate=no enabled=no
-```
-
-#### Set System Identity and System Clock
-
-* System Indentity
-```
-/system identity
-set name=COREROUTE-RB2011-CPE
-```
-
-* System Clock
-```
-/system clock
-set time-zone-name=Asia/Jakarta
 ```
 
 ### Step 3. Routing OSPF
