@@ -477,6 +477,22 @@ set winbox port=58291  \\ Custom Port Winbox
 set api-ssl disabled=yes
 ```
 
+#### Disable Bandwidth Server
+```
+/tool bandwidth-server
+set authenticate=no enabled=no
+```
+
+#### Disable Mac-Server
+```
+/tool mac-server
+set allowed-interface-list=none
+/tool mac-server mac-winbox
+set allowed-interface-list=none
+/tool mac-server ping
+set enabled=no
+```
+
 #### Delete Default Admin
 ```
 /user remove admin
