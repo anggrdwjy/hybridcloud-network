@@ -466,16 +466,27 @@ add network=10.15.0.0/24 synchronize=no
 #### MikroTik CHR on VPS and MikroTik RB2011
 
 #### Drop Brute Force SSH
+* Firewall Filter
 ```
 /ip firewall filter
-add action=drop chain=input comment="Drop SSH Brute Force" dst-port=21112 protocol=tcp src-address-list=ssh_blacklist
-add action=add-src-to-address-list address-list=ssh_blacklist address-list-timeout=1w3d chain=input connection-state=new\
-dst-port=21112 protocol=tcp src-address-list=ssh_stage3
-add action=add-src-to-address-list address-list=ssh_stage3 address-list-timeout=1m chain=input connection-state=new\
-dst-port=21112 protocol=tcp src-address-list=ssh_stage2
-add action=add-src-to-address-list address-list=ssh_stage2 address-list-timeout=1m chain=input connection-state=new\
-dst-port=21112 protocol=tcp src-address-list=ssh_stage1
+add action=drop chain=input dst-port=21112 protocol=tcp src-address-list=black-list
+add action=accept chain=input connection-state=new dst-limit=1/1m,2,src-and-dst-addresses/1m40s dst-port=21112 protocol=tcp
+add action=add-src-to-address-list address-list=black-list address-list-timeout=1w chain=input connection-state=new dst-port=21112 protocol=tcp
 ```
+
+* Testing Brute Force with Hydra
+<p align="left">
+<img src="img/hydrassh.png">
+</p>
+
+* Verification Testing
+<p align="left">
+<img src="img/hydrasshtest.png">
+</p>
+
+<p align="left">
+<img src="img/hydrasshblacklist.png">
+</p>
 
 #### Privilege Login Access-List
 <p align="left">
