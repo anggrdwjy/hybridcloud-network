@@ -254,78 +254,87 @@ set enabled=yes ipsec-secret=changemenow use-ipsec=yes
 add add-default-route=yes connect-to=103.xx.yy.zz:49341 disabled=no http-proxy=0.0.0.0:49341 name=sstp-out1 password=changemenow profile=default-encryption user=sstp.proxmox
 ```
 
-### Step 4. Routing OSPF
+## Step 4. Routing OSPF
 
 #### A. MikroTik CHR on VPS
 
-* Set Loopback
+#### Set Loopback
 ```
 /interface bridge
 add name=Lo0
 ```
 
-* Set IP Loopback
+#### Set IP Loopback
 ```
 /ip address
 add address=192.168.150.1 interface=Lo0 network=192.168.150.1
 ```
 
-* Set OSPF Instance
+#### Set OSPF Instance
 ```
 /routing ospf instance
 set [ find default=yes ] router-id=192.168.150.1
 ```
 
-* Set OSPF Network Advertise
+#### Set OSPF Network Advertise
 ```
 /routing ospf network
 add area=backbone network=10.13.3.4/31
 add area=backbone network=192.168.150.1/32
 ```
 
-* Set OSPF Routing Filter
+#### Set OSPF Routing Filter
 ```
 /routing filter
 add action=accept chain=ospf-in prefix-length=31-32
 add action=discard chain=ospf-in
-
 ```
+
+#### OSPF Verification
+<p align="left">
+<img src="img/ospfinetgw.png">
+</p>
 
 #### B. MikroTik RB2011 (Router Local)
 
-* Set Loopback
+#### Set Loopback
 ```
 /interface bridge
 add name=Lo0
 ```
 
-* Set IP Loopback
+#### Set IP Loopback
 ```
 /ip address
 add address=192.168.150.2 interface=Lo0 network=192.168.150.2
 ```
 
-* Set OSPF Instance
+#### Set OSPF Instance
 ```
 /routing ospf instance
 set [ find default=yes ] router-id=192.168.150.2
 ```
 
-* Set OSPF Network Advertise
+#### Set OSPF Network Advertise
 ```
 /routing ospf network
 add area=backbone network=10.13.3.4/31
 add area=backbone network=192.168.150.2/32
 ```
 
-* Set OSPF Routing Filter
+#### Set OSPF Routing Filter
 ```
 /routing filter
 add action=accept chain=ospf-in prefix-length=31-32
 add action=discard chain=ospf-in
 ```
 
-### Step 5. Routing BGP
+#### OSPF Verification
+<p align="left">
+<img src="img/ospfcore.png">
+</p>
+
+## Step 5. Routing BGP
 
 #### A. MikroTik CHR on VPS
 
@@ -346,7 +355,8 @@ set default as=65000 client-to-client-reflection=no router-id=192.168.150.1
 #### Set BGP Peer
 ```
 /routing bgp peer
-add name=peer-ROUTECORE out-filter=bgp-out remote-address=192.168.150.2 remote-as=65000 tcp-md5-key=changemenow update-source=Lo0
+add name=peer-ROUTECORE out-filter=bgp-out remote-address=192.168.150.2 remote-as=65000\
+tcp-md5-key=changemenow update-source=Lo0
 ```
 
 #### Set BGP Network Advertise
@@ -380,7 +390,8 @@ set default as=65000 client-to-client-reflection=no router-id=192.168.150.
 #### Set BGP Peer
 ```
 /routing bgp peer
-add name=peer-INETGW out-filter=bgp-out remote-address=192.168.150.1 remote-as=65000 tcp-md5-key=changemenow update-source=Lo0
+add name=peer-INETGW out-filter=bgp-out remote-address=192.168.150.1 remote-as=65000\
+tcp-md5-key=changemenow update-source=Lo0
 ```
 
 #### Set BGP Network Advertise
@@ -397,7 +408,7 @@ add network=10.15.0.0/24 synchronize=no
 <img src="img/bgpcore.png">
 </p>
 
-### Step 6. Harderning
+## Step 6. Harderning
 
 #### MikroTik CHR on VPS and MikroTik RB2011
 
@@ -447,7 +458,7 @@ set authenticate=no enabled=no
 </p>
 
 
-### Step 7. DNS over HTTPs (Configuration on MikroTik VPS)
+## Step 7. DNS over HTTPs (Configuration on MikroTik VPS)
 
 #### Import Cert
 ```
