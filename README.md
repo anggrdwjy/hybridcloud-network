@@ -21,7 +21,7 @@
 - VPN Tunnel Server L2TP, SSTP and VPN Client 
 - Routing OSPF and Routing Filter (Accept and Discard)
 - Routing BGP and Routing Filter (Accept and Discard)
-- Harderning (User Login Access-List, Disable Bandwidth Server, Disable Mac-Server, Delete Default Admin, Disable Neighbor Discovery, Disable SMB, Disable and Custom Port Service)
+- Harderning (Drop Brute Force SSH, Privilege Login Access-List, Disable Bandwidth Server, Disable Mac-Server, Delete Default Admin, Disable Neighbor Discovery, Disable SMB, Disable and Custom Port Service)
 - DNS Over HTTPs (Cloudflare)
 
 #### Proxmox Configuration
