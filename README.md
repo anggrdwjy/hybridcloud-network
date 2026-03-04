@@ -657,10 +657,38 @@ iface vlan13 inet static
 ```
 Include /etc/ssh/sshd_config.d/*.conf
 
-Port 21342
+Port 21112
 #AddressFamily any
 #ListenAddress 0.0.0.0
 #ListenAddress ::
+```
+
+* Restart SSH
+```
+systemctl restart sshd
+```
+
+* SSH Status
+```
+root@awc-east-01:~# systemctl status sshd
+● ssh.service - OpenBSD Secure Shell server
+     Loaded: loaded (/lib/systemd/system/ssh.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2024-10-11 00:42:32 WIB; 1 year 4 months ago
+       Docs: man:sshd(8)
+             man:sshd_config(5)
+    Process: 815 ExecStartPre=/usr/sbin/sshd -t (code=exited, status=0/SUCCESS)
+   Main PID: 830 (sshd)
+      Tasks: 1 (limit: 28551)
+     Memory: 2.7M
+        CPU: 16ms
+     CGroup: /system.slice/ssh.service
+             └─830 "sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups"
+
+Oct 11 00:42:32 awc-east-01.local systemd[1]: Starting ssh.service - OpenBSD Secure Shell server...
+Oct 11 00:42:32 awc-east-01.local sshd[830]: Server listening on 0.0.0.0 port 21112.
+Oct 11 00:42:32 awc-east-01.local sshd[830]: Server listening on :: port 21112.
+Oct 11 00:42:32 awc-east-01.local systemd[1]: Started ssh.service - OpenBSD Secure Shell server.
+root@awc-east-01:~# 
 ```
 
 #### Install Fail2ban
