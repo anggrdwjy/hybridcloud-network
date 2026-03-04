@@ -461,7 +461,7 @@ add network=10.15.0.0/24 synchronize=no
 <img src="img/bgpcore.png">
 </p>
 
-### Step 6. Harderning
+### Step 6. Harderning MikroTik
 
 #### MikroTik CHR on VPS and MikroTik RB2011
 
