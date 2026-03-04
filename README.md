@@ -171,7 +171,7 @@ add name=dhcp_pool1 ranges=172.23.74.66-172.23.74.126
 add address-pool=dhcp_pool1 disabled=no interface=vlan2374 name=dhcp1
 ```
 
-* Set DCHP Server Network
+* Set DHCP Server Network
 ```
 /ip dhcp-server network
 add address=172.23.74.64/26 dns-server=1.1.1.1,1.0.0.1 gateway=172.23.74.65
@@ -254,7 +254,7 @@ set enabled=yes ipsec-secret=changemenow use-ipsec=yes
 add add-default-route=yes connect-to=103.xx.yy.zz:49341 disabled=no http-proxy=0.0.0.0:49341 name=sstp-out1 password=changemenow profile=default-encryption user=sstp.proxmox
 ```
 
-### Step 3. Routing OSPF
+### Step 4. Routing OSPF
 
 #### A. MikroTik CHR on VPS
 
@@ -325,7 +325,7 @@ add action=accept chain=ospf-in prefix-length=31-32
 add action=discard chain=ospf-in
 ```
 
-### Step 4. Routing BGP
+### Step 5. Routing BGP
 
 #### A. MikroTik CHR on VPS
 
