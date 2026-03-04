@@ -6,9 +6,10 @@
 
 ### Information
 
-- Virtual Private Server (AWS/GCP/DigitalOcean/Hostinger/Local Provider VPS) 1 CPU, 1 RAM, 30GB Storage Include Public IP
+- Virtual Private Server (AWS/GCP/DigitalOcean/Hostinger/Local Provider VPS)
+- Spesification VPS 1 CPU, 1 RAM, 30GB Storage Include Public IP
 - OS Virtual Private Server, MikroTik RoS 6.49.xx or Newer
-- RouterBoard MikroTik RB750/RB951/RB2011 or MikroTik CHR x86 (CHR x86 include license P1) RoS 6.49.xx or Newer
+- RouterBoard MikroTik RB750/RB951/RB2011 or MikroTik CHR x86 (Include license P1)
 - Build PC Intel i5 Gen 10, RAM 32GB, HDD 1TB and SSD 500GB
 - Proxmox Virtualization Environment (For Virtualizaition Host)
 - Electircal system support 24/7
