@@ -465,6 +465,18 @@ add network=10.15.0.0/24 synchronize=no
 
 #### MikroTik CHR on VPS and MikroTik RB2011
 
+#### Drop Brute Force SSH
+```
+/ip firewall filter
+add action=drop chain=input comment="Drop SSH Brute Force" dst-port=21112 protocol=tcp src-address-list=ssh_blacklist
+add action=add-src-to-address-list address-list=ssh_blacklist address-list-timeout=1w3d chain=input connection-state=new\
+dst-port=21112 protocol=tcp src-address-list=ssh_stage3
+add action=add-src-to-address-list address-list=ssh_stage3 address-list-timeout=1m chain=input connection-state=new\
+dst-port=21112 protocol=tcp src-address-list=ssh_stage2
+add action=add-src-to-address-list address-list=ssh_stage2 address-list-timeout=1m chain=input connection-state=new\
+dst-port=21112 protocol=tcp src-address-list=ssh_stage1
+```
+
 #### Privilege Login Access-List
 <p align="left">
 <img src="img/useracclist.png">
