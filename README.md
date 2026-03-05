@@ -794,6 +794,6 @@ Detail Documentation : https://github.com/anggrdwjy/proxmox-fail2ban
 #### Bug
 
 Please open an issue on GitHub with as much information as possible if you found a bug.
-* Your Proxmox and Fail2ban Version
+* Your Virtual Private Server, MikroTik, Proxmox and Fail2ban Version
 * All the logs and message outputted
 * etc
