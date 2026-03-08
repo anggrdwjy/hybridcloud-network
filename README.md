@@ -3,7 +3,7 @@
 <img src="img/banner.png">
 </p>
 
-### Information
+### Information Environment (Software, Hardware, Vendor Technology)
 - Virtual Private Server (AWS/GCP/DigitalOcean/Hostinger/Local Provider VPS)
 - Spesification VPS 1 CPU, 1 RAM, 30GB Storage Include Public IP
 - OS Virtual Private Server, MikroTik RoS 6.49.xx or Newer
