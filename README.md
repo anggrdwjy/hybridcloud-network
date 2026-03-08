@@ -16,8 +16,8 @@
 ## Network Configuration Scope
 
 #### Router MikroTik Configuration
-- Basic Configuration (UserPass Management, Static Route, DNS, DHCP Server, DHCP Client)
-- Firewall NAT and Address-List (Whitelist IP)
+- Basic Configuration (UserPass Management, VLAN, Static Route, DNS, DHCP Server, DHCP Client)
+- Firewall NAT and Address-List (Whitelist IP, Blocklist IP)
 - VPN Tunnel Server L2TP, SSTP and VPN Client 
 - Routing OSPF and Routing Filter (Accept and Discard)
 - Routing BGP and Routing Filter (Accept and Discard)
